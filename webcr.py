@@ -12,6 +12,14 @@ title = sp.select("#content.Content h3.Ctit")
 for t in title:
     title_txt = t.get_text()
     print(title_txt)    
+
+#공지
+notice_19 = sp.select("#content.Content td.subject b")
+
+#공지출력
+for n in notice_19:
+    notice19_txt = n.get_text()
+    print(notice19_txt)    
 print("\n")
 
 #여행 관련 정보
