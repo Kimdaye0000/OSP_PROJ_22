@@ -7,7 +7,11 @@ from bs4 import BeautifulSoup
 def crawl(country: str):
     url = 'https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=' + country + '+여행+준비'
     res = requests.get(url)
+    if res.status_code != 200:
+        return None
     soup = BeautifulSoup(res.content, 'html.parser')
+
+    #입국조건
     inboundData = soup.select("#nxTsOv div.item-2sM-R")
     #한국귀국시
     quarantineInfo = soup.select("#nxTsOv div.item-PxYX-")
@@ -19,16 +23,12 @@ def crawl(country: str):
     isEntPass, isVaccineReq, isQurantAtDest = 'NoData', 'NoData', 'NoData'
     for i,text in enumerate(inboundData): # 현재 입국가능여부, 백신필수여부, 현지격리여부
         idx = text.get_text().find('여부') + 2
-        if( i == 0):
+        if(i == 0):
             isEntPass = text.get_text()[idx:]
         elif(i == 1):
             isVaccineReq = text.get_text()[idx:]
         else:
             isQurantAtDest = text.get_text()[idx:]
-    # print(isEntPass)
-    # print(isVaccineReq)
-    # print(isQurantAtDest)
-    # print()
 
     vaccinatedPerson, unvaccinatedPerson = 'NoData', 'NoData'
     for i,text in enumerate(quarantineInfo): # 백신접종여부에 따른 격리여부
@@ -37,9 +37,6 @@ def crawl(country: str):
             vaccinatedPerson = text.get_text()[idx:]
         else:
             unvaccinatedPerson = text.get_text()[idx:]
-    # print(vaccinatedPerson)
-    # print(unvaccinatedPerson)
-    # print()
 
     flightTime,visaNecessity,currency,voltage,weather,language,timeDiff,tippingCul,livingExp = 'NoData','NoData','NoData','NoData','NoData','NoData','NoData','NoData','NoData',
     # 데이터값이 없는경우 구분을 위한 초기화
@@ -64,12 +61,8 @@ def crawl(country: str):
             tippingCul = text[3:]
         elif("물가" in text):
             livingExp = text[2:]
-        
-    # print(flightTime,visaNecessity,currency,voltage,weather,language,timeDiff,tippingCul,livingExp)
-    # print()
 
     recomDateToGo = recomDate[1].get_text()[4:] # 추천 여행일자
-    # print(recomDateToGo)
 
     countryInfoDocument = { # ES 문서화
         "Country" : country,
@@ -90,13 +83,16 @@ def crawl(country: str):
     }
 
     for key, value in countryInfoDocument.items():
-        print(key, value)
+        if value:
+            print(key, value)
 
     '''searchPopularDoc = { # Naver 검색어 트렌드 문서화
         "period" : periodList,
         "ratio" : ratioList,
     }'''
 
+    return countryInfoDocument
+
 if __name__ == '__main__':
     country = '모로코'
-    crawl(country)
+    print(crawl(country))
