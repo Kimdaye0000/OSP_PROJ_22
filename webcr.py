@@ -23,7 +23,13 @@ for n in notice_19:
 print("\n")
 
 #여행 관련 정보
-country = '모로코'
+country = ''
+while(1):
+	country = input('나라를 한국어로 입력해주세요 : ')
+	if(country.encode().isalpha()==False):
+		break		
+print("\n")
+
 res = requests.get('https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query='+country+'+여행+준비')
 soup = BeautifulSoup(res.content, 'html.parser')
 
@@ -38,24 +44,24 @@ recommend = soup.select("#nxTsOv div.item")
 
 #입국조건 출력
 for e in entry:
-    entry_txt = e.get_text().split("여부")	    
-    print(f"{entry_txt[0]}여부 : {entry_txt[1]}  ")
+	entry_txt = e.get_text().split("여부")	    
+	print(f"{entry_txt[0]}여부 : {entry_txt[1]}  ")
 print("\n")
 
 #한국귀국시 출력
 for h in home:
-    home_txt = h.get_text()
-    print(home_txt)
+	home_txt = h.get_text()
+	print(home_txt)
 print("\n")    
-
+	
 #여행전체크하기 출력
 for c in check:
-    check_txt = c.get_text()
-    print(check_txt)
+	check_txt = c.get_text()
+	print(check_txt)
 print("\n")    
 
 #추천여행기간 출력   
 for r in recommend:
-    recommend_txt = r.get_text()
-    print(recommend_txt)    
-	 
+	recommend_txt = r.get_text()
+	print(recommend_txt)    
+	 	
