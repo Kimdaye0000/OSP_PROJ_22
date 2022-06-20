@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minumum-scale=1.0">
+    <title>YOUrTravel</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nomalize.css') }}">
+    <link href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .subgraph1 span {
+            animation: fill1 2s ease 1s;
+        }
+
+        .subgraph2 span {
+            animation: fill2 2s ease 1s;
+        }
+
+        .subgraph3 span {
+            animation: fill3 2s ease 1s;
+        }
+
+        .subgraph4 span {
+            animation: fill4 2s ease 1s;
+        }
+
+        .subgraph5 span {
+            animation: fill5 2s ease 1s;
+        }
+
+        .subgraph6 span {
+            animation: fill6 2s ease 1s;
+        }
+
+        @keyframes fill1 {
+            0% {
+                height: 0%;
+            }
+
+            100% {
+                height: 20%;
+            }
+        }
+
+        @keyframes fill2 {
+            0% {
+                height: 0%;
+            }
+
+            100% {
+                height: 30%;
+            }
+        }
+
+        @keyframes fill3 {
+            0% {
+                height: 0%;
+            }
+
+            100% {
+                height: 40%;
+            }
+        }
+
+        @keyframes fill4 {
+            0% {
+                height: 0%;
+            }
+
+            100% {
+                height: 90%;
+            }
+        }
+
+        @keyframes fill5 {
+            0% {
+                height: 0%;
+            }
+
+            100% {
+                height: 100%;
+            }
+        }
+
+        @keyframes fill6 {
+            0% {
+                height: 0%;
+            }
+
+            100% {
+                height: 30%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="inner">
+            <div class="head-container">
+                <div class="proj_name"><a href="https://www.naver.com">오픈소스프로젝트</a></div>
+                <div class="team_name">프로젝트 5팀(김병준, 김재훈, 김병우, 김다예)</div>
+            </div>
+        </div>
+    </header>
+    <!--정보페이지 메인-->
+    <section class="sub-main">
+        <div class="inner">
+            <div class="country-container">
+                <div class="countryName">{{data['Country']}}</div>
+                <div class="vaccInfo">현재 {{data['Country']}}은 {{data['PossibleToVisit']}}이며 백신접종은
+                    {{data['Vaccination']}}이고, 현지격리여부는 {{data['QurantineInfo']}}입니다.<br>귀국시 백신접종자는
+                    {{data['VaccineStatus_OK']}} 이며, 미접종자는 {{data['VaccineStatus_Not']}}입니다.</div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="inner">
+            <div class="travelInfo-container">
+                <div class="Tinfo">
+                    <i class="xi-flight-takeoff xi-3x plane-style"></i></i>
+                    <div class="infoTitle">
+                        <div class="infoname">비행시간</div>
+                        <div class="infocontent">{{data['FlightTime']}}</div>
+                    </div>
+                </div>
+                <div class="Tinfo">
+                    <i class="xi-book xi-3x visa-style"></i></i>
+                    <div class="infoTitle">
+                        <div class="infoname">비자</div>
+                        <div class="infocontent">{{data['Visa']}}</div>
+                    </div>
+                </div>
+                <div class="Tinfo">
+                    <i class="xi-won xi-3x rate-style"></i></i>
+                    <div class="infoTitle">
+                        <div class="infoname">환율</div>
+                        <div class="infocontent">{{data['ExchangeRate']}}</div>
+                    </div>
+                </div>
+                <div class="Tinfo">
+                    <i class="xi-plug xi-3x volt-style"></i></i>
+                    <div class="infoTitle">
+                        <div class="infoname">전압</div>
+                        <div class="infocontent">{{data['Voltage']}}</div>
+                    </div>
+                </div>
+                <div class="Tinfo">
+                    <i class="xi-sun xi-3x whether-style"></i></i>
+                    <div class="infoTitle">
+                        <div class="infoname">날씨</div>
+                        <div class="infocontent">{{data['Weather']}}</div>
+                    </div>
+                </div>
+                <div class="Tinfo">
+                    <i class="xi-translate xi-3x lan-style"></i></i>
+                    <div class="infoTitle">
+                        <div class="infoname">언어</div>
+                        <div class="infocontent">{{data['Language']}}</div>
+                    </div>
+                </div>
+                <div class="Tinfo">
+                    <i class="xi-time xi-3x time-style"></i></i>
+                    <div class="infoTitle">
+                        <div class="infoname">시차</div>
+                        <div class="infocontent">{{data['TimeDifference']}}</div>
+                    </div>
+                </div>
+                <div class="Tinfo">
+                    <i class="xi-wallet xi-3x tip-style"></i></i>
+                    <div class="infoTitle">
+                        <div class="infoname">팁</div>
+                        <div class="infocontent">{{data['TippingCulture']}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="inner">
+            <div class="trend-container">
+                <div class="trendtitle">트렌드 알아보기</div>
+                <div class="trendSubTitle">네이버 검색 트렌드를 기준으로 현재 얼마나 인기가 많은 나라인지 알아보세요</div>
+                <ul class="graph">
+                    <li>
+                        <div class="subgraph1">
+                            <span style="height: 20%;">
+                                <i>20</i>
+                            </span>
+                        </div>
+                        <p>1월</p>
+                    </li>
+                    <li>
+                        <div class="subgraph2">
+                            <span style="height: 30%;">
+                                <i>30</i>
+                            </span>
+                        </div>
+                        <p>2월</p>
+                    </li>
+                    <li>
+                        <div class="subgraph3">
+                            <span style="height: 40%;">
+                                <i>40</i>
+                            </span>
+                        </div>
+                        <p>3월</p>
+                    </li>
+                    <li>
+                        <div class="subgraph4">
+                            <span style="height: 90%;">
+                                <i>90</i>
+                            </span>
+                        </div>
+                        <p>4월</p>
+                    </li>
+                    <li>
+                        <div class="subgraph5">
+                            <span style="height: 100%;">
+                                <i>100</i>
+                            </span>
+                        </div>
+                        <p>5월</p>
+                    </li>
+                    <li>
+                        <div class="subgraph6">
+                            <span style="height: 30%;">
+                                <i>30</i>
+                            </span>
+                        </div>
+                        <p>6월</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
