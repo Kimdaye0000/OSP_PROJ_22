@@ -113,8 +113,10 @@
     <section class="sub-main">
         <div class="inner">
             <div class="country-container">
-                <div class="countryName">나라이름</div>
-                <div class="vaccInfo">관련 입국 정보에 대해서 쓰일 곳입니다</div>
+                <div class="countryName">{{data['Country']}}</div>
+                <div class="vaccInfo">현재 {{data['Country']}}은 {{data['PossibleToVisit']}}이며 백신접종은
+                    {{data['Vaccination']}}이고, 현지격리여부는 {{data['QurantineInfo']}}입니다.<br>귀국시 백신접종자는
+                    {{data['VaccineStatus_OK']}} 이며, 미접종자는 {{data['VaccineStatus_Not']}}입니다.</div>
             </div>
         </div>
     </section>
@@ -125,56 +127,56 @@
                     <i class="xi-flight-takeoff xi-3x plane-style"></i></i>
                     <div class="infoTitle">
                         <div class="infoname">비행시간</div>
-                        <div class="infocontent">15시간</div>
+                        <div class="infocontent">{{data['FlightTime']}}</div>
                     </div>
                 </div>
                 <div class="Tinfo">
                     <i class="xi-book xi-3x visa-style"></i></i>
                     <div class="infoTitle">
                         <div class="infoname">비자</div>
-                        <div class="infocontent">15시간</div>
+                        <div class="infocontent">{{data['Visa']}}</div>
                     </div>
                 </div>
                 <div class="Tinfo">
                     <i class="xi-won xi-3x rate-style"></i></i>
                     <div class="infoTitle">
                         <div class="infoname">환율</div>
-                        <div class="infocontent">15시간</div>
+                        <div class="infocontent">{{data['ExchangeRate']}}</div>
                     </div>
                 </div>
                 <div class="Tinfo">
                     <i class="xi-plug xi-3x volt-style"></i></i>
                     <div class="infoTitle">
                         <div class="infoname">전압</div>
-                        <div class="infocontent">15시간</div>
+                        <div class="infocontent">{{data['Voltage']}}</div>
                     </div>
                 </div>
                 <div class="Tinfo">
                     <i class="xi-sun xi-3x whether-style"></i></i>
                     <div class="infoTitle">
                         <div class="infoname">날씨</div>
-                        <div class="infocontent">15시간</div>
+                        <div class="infocontent">{{data['Weather']}}</div>
                     </div>
                 </div>
                 <div class="Tinfo">
                     <i class="xi-translate xi-3x lan-style"></i></i>
                     <div class="infoTitle">
                         <div class="infoname">언어</div>
-                        <div class="infocontent">15시간</div>
+                        <div class="infocontent">{{data['Language']}}</div>
                     </div>
                 </div>
                 <div class="Tinfo">
                     <i class="xi-time xi-3x time-style"></i></i>
                     <div class="infoTitle">
                         <div class="infoname">시차</div>
-                        <div class="infocontent">15시간</div>
+                        <div class="infocontent">{{data['TimeDifference']}}</div>
                     </div>
                 </div>
                 <div class="Tinfo">
                     <i class="xi-wallet xi-3x tip-style"></i></i>
                     <div class="infoTitle">
                         <div class="infoname">팁</div>
-                        <div class="infocontent">15시간</div>
+                        <div class="infocontent">{{data['TippingCulture']}}</div>
                     </div>
                 </div>
             </div>
