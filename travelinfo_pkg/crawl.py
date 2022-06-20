@@ -1,10 +1,11 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 #-*- coding: utf-8 -*-
 
 import requests
 from bs4 import BeautifulSoup
+import datetime
 
-def crawl(country: str):
+def crawlCountryInfo(country: str):
     url = 'https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=' + country + '+여행+준비'
     res = requests.get(url)
     if res.status_code != 200:
@@ -82,17 +83,42 @@ def crawl(country: str):
         "LivingCost" : livingExp
     }
 
-    for key, value in countryInfoDocument.items():
-        if value:
-            print(key, value)
-
-    '''searchPopularDoc = { # Naver 검색어 트렌드 문서화
-        "period" : periodList,
-        "ratio" : ratioList,
-    }'''
-
     return countryInfoDocument
+
+def crawlSearchPopularity(country: str):
+    # datetime 모듈에서 날짜 가져오기
+    year = datetime.date.today().year
+    month = datetime.date.today().month
+    day = datetime.date.today().day
+    
+    #naverAPI id, secret(나중에 가릴 것)
+    client_id = ""
+    client_secret = ""
+    header_parm = { "X-Naver-Client-Id" : client_id, "X-Naver-Client-Secret" : client_secret }
+    naver_datalab = "https://openapi.naver.com/v1/datalab/search"
+
+    keywordsG = [ { "groupName" : country + "여행", "keywords" : [ country + "여행" ] } ]
+    enddate = "%d-%02d-%02d" % (year, month, day)
+    postdata = { "startDate" : "2022-01-02", "endDate" : enddate, "timeUnit" : "month", "keywordGroups" : keywordsG}
+
+    res = requests.post(naver_datalab, headers=header_parm, json=postdata)
+    #입력 키워드는 여행국가명+여행, 데이터는 한달단위로 받아옴 필요시 수정가능
+
+    if (res.status_code == 200):
+        data = res.json()
+        periodList = [i['period'] for i in data['results'][0]['data']] # 몇 월 데이터인지
+        ratioList = [int(i['ratio']) for i in data['results'][0]['data']]   # 최고 검색달이 100으로 기준잡히고 나머지 상대적 표현
+
+        searchPopularDoc = { # Naver 검색어 트렌드 문서화
+            "period" : periodList,
+            "ratio" : ratioList,
+        }
+
+        return searchPopularDoc
+    else:
+        return None
 
 if __name__ == '__main__':
     country = '모로코'
-    print(crawl(country))
+    print(crawlCountryInfo(country))
+    print(crawlSearchPopularity(country))

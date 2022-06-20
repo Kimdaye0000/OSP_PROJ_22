@@ -2,8 +2,6 @@
 #-*-coding: utf-8 -*-
 
 from flask import Flask, render_template, redirect, request
-import requests
-from bs4 import BeautifulSoup
 from elasticsearch import Elasticsearch
 from travelinfo_pkg import *
 
@@ -21,17 +19,25 @@ def index():
 def info():
 	if request.method == 'GET':
 		country = request.args.get('country')
-		countryInfoDocument = crawl(country)
+
+		countryInfoDocument = crawlCountryInfo(country)
 		if countryInfoDocument != None:
 			insertToIndex(es, index_countryinfo, country, countryInfoDocument)
-			return render_template('info.html', data=countryInfoDocument)
 		else:
 			query = { "query": { "bool": { "filter": [ { "match_phrase": { "Country": country } } ] } } }
-			searchRes = searchFromIndex(es, index_countryinfo, query)
-			if searchRes != None:
-				return render_template('info.html', data=searchRes)
-			else:
-				return render_template('error.html', data=country)
+			countryInfoDocument = searchFromIndex(es, index_countryinfo, query)
+		
+		searchPopularDoc = crawlSearchPopularity(country)
+		if searchPopularDoc != None:
+			insertToIndex(es, index_searchpopularity, country, searchPopularDoc)
+		else:
+			query = { "query": { "bool": { "filter": [ { "match_phrase": { "Country": country } } ] } } }
+			searchPopularDoc = searchFromIndex(es, index_searchpopularity, query)
+
+		if countryInfoDocument != None and searchPopularDoc != None:
+			return render_template('info.html', countryInfo=countryInfoDocument, searchPopularity=searchPopularDoc)
+		else:
+			return render_template('error.html', country=country)
 
 if __name__ == '__main__':
 

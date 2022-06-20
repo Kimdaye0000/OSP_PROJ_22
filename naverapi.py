@@ -8,8 +8,9 @@ day = datetime.date.today().day
 
 nation = "일본" # 나중에 사용자 입력으로 수정
 
-client_id = " "
-client_secret = " " # 깃허브에 오픈되기 때문에 가려놉니다 필요시 디스코드에 올려드릴테니 확인해보세요
+client_id = ""
+client_secret = ""
+# 깃허브에 오픈되기 때문에 가려놉니다 필요시 디스코드에 올려드릴테니 확인해보세요
 header_parm= {"X-Naver-Client-Id":client_id, "X-Naver-Client-Secret":client_secret} 
 naver_datalab = "https://openapi.naver.com/v1/datalab/search"
 keywordsG = [{"groupName":f"{nation}여행","keywords":[f"{nation}여행"]}]
