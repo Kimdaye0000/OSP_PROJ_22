@@ -33,9 +33,15 @@ if __name__ == '__main__':
     es_host ="http://localhost:9200"
     index_countryinfo = "countryinfo"
     index_searchpopularity = "searchpopularity"
+    country = '모로코'
 
     es = Elasticsearch(es_host)
 
-    createIndex(es, index_countryinfo)
+    print(checkIndex(es, index_countryinfo))
 
+    if not checkIndex(es, index_countryinfo):
+        createIndex(es, index_countryinfo)
     
+    query = { "query": { "bool": { "filter": [ { "match_phrase": { "Country": country } } ] } } }
+    searchRes = searchFromIndex(es, index_countryinfo, query)
+    print(searchRes)

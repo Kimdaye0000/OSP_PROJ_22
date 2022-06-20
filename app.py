@@ -7,17 +7,6 @@ from bs4 import BeautifulSoup
 from elasticsearch import Elasticsearch
 from travelinfo_pkg import *
 
-def indexChecker(name):
-    if es.indices.exists(index=name):
-        es.indices.delete(index=name)
-
-def insertToES(index, id, document):
-    es.index(index=index ,id=id,document=document )
-
-def infoFromES(searchCountry:str , searchIdx:str): # index값과 나라이름을 입력하면 해당 값을 dict로 반환합니다.
-    retResult = es.search(index=searchIdx, body={ "query": { "bool": { "filter": [ { "match_phrase": { "Country":searchCountry } } ] } } })
-    return retResult['hits']['hits'][0]['_source']
-
 es_host ="http://localhost:9200"
 index_countryinfo = "countryinfo"
 index_searchpopularity = "searchpopularity"
