@@ -1,0 +1,97 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+    font-family: "Spoqa Han Sans Neo", "Sans-serif";
+}
+
+a {
+    all: unset;
+}
+
+a:link {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+a:active {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: url(img/main_sec.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+}
+
+.maintitle {
+    font-size: 6rem;
+    font-family: 'Karla', sans-serif;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    padding-top: 15%;
+    opacity: 0.6;
+}
+
+
+.get {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.inputele {
+    width: 100%;
+    font-size: 1.5rem;
+    font-family: "Do Hyeon",
+        sans-serif;
+    margin-top: 30px;
+    padding-bottom: 25px;
+
+}
+
+.inputele input {
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 800px;
+    height: 50px;
+    text-align: center;
+}
+
+.submitele {
+    width: 100%;
+    text-align: center;
+}
+
+.submitele input {
+    width: 100px;
+    height: 30px;
+    font-family: 'Karla', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    border-style: none;
+    background: linear-gradient(90deg, rgba(233, 141, 45, 0.9) 0%, rgba(233, 184, 102, 0.8) 32%, rgba(215, 210, 202, 0.5) 64%, rgba(230, 234, 235, 0.4) 100%);
+}
+
+input[type='submit']:hover {
+    color: lavenderblush;
+}

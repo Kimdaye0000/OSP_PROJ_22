@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOUrTravel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nomalize.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main-style.css') }}">
+</head>
+
+<body>
+    <section>
+        <div class="maintitle">YourTravel</div>
+        <div class="get">
+            <form action="/info" method="get">
+                <div class="inputele">
+                    <input type="text" name="country" required placeholder="국가명을 입력하세요">
+                </div>
+                <div class="submitele">
+                    <input type="submit" value="Explore">
+                </div>
+            </form>
+        </div>
+    </section>
+
+</body>
+
+</html>
