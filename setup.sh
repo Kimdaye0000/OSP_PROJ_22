@@ -27,7 +27,3 @@ if [ ! -d ~/$ES_PATH ]; then
 fi
 sed -i 's/#cluster.name: my-application/cluster.name: my-application/' ~/$ES_PATH/config/elasticsearch.yml
 sed -i 's/xpack.security.enabled: true/xpack.security.enabled: false/' ~/$ES_PATH/config/elasticsearch.yml
-
-# 스크립트 실행
-~/$ES_PATH/bin/elasticsearch -d -p es.pid
-python app.py
