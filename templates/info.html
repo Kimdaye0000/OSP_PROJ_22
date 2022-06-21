@@ -167,19 +167,32 @@
     </section>
 
     <script>
-        $('.subgraph1 span').css('height', '0%')
-        $('.subgraph2 span').css('height', '0%')
-        $('.subgraph3 span').css('height', '0%')
-        $('.subgraph4 span').css('height', '0%')
-        $('.subgraph5 span').css('height', '0%')
-        $('.subgraph6 span').css('height', '0%')
 
-        $('.subgraph1 span').animate({ 'height': '{{data2["ratio"][0]}}%' }, 2500, 'easeInOutQuad')
-        $('.subgraph2 span').animate({ 'height': '{{data2["ratio"][1]}}%' }, 2500, 'easeInOutQuad')
-        $('.subgraph3 span').animate({ 'height': '{{data2["ratio"][2]}}%' }, 2500, 'easeInOutQuad')
-        $('.subgraph4 span').animate({ 'height': '{{data2["ratio"][3]}}%' }, 2500, 'easeInOutQuad')
-        $('.subgraph5 span').animate({ 'height': '{{data2["ratio"][4]}}%' }, 2500, 'easeInOutQuad')
-        $('.subgraph6 span').animate({ 'height': '{{data2["ratio"][5]}}%' }, 2500, 'easeInOutQuad')
+        $(function () {
+
+            var $cssGraph = $('.graph');
+            var $graphDis = 200;
+
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > $graphDis) {
+                    $('.subgraph1 span').css('height', '0%')
+                    $('.subgraph2 span').css('height', '0%')
+                    $('.subgraph3 span').css('height', '0%')
+                    $('.subgraph4 span').css('height', '0%')
+                    $('.subgraph5 span').css('height', '0%')
+                    $('.subgraph6 span').css('height', '0%')
+
+                    $('.subgraph1 span').animate({ 'height': '{{data2["ratio"][0]}}%' }, 2500, 'easeInOutQuad')
+                    $('.subgraph2 span').animate({ 'height': '{{data2["ratio"][1]}}%' }, 2500, 'easeInOutQuad')
+                    $('.subgraph3 span').animate({ 'height': '{{data2["ratio"][2]}}%' }, 2500, 'easeInOutQuad')
+                    $('.subgraph4 span').animate({ 'height': '{{data2["ratio"][3]}}%' }, 2500, 'easeInOutQuad')
+                    $('.subgraph5 span').animate({ 'height': '{{data2["ratio"][4]}}%' }, 2500, 'easeInOutQuad')
+                    $('.subgraph6 span').animate({ 'height': '{{data2["ratio"][5]}}%' }, 2500, 'easeInOutQuad')
+
+                }
+            });
+
+        });
 
 
 
