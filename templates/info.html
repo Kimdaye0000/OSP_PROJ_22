@@ -13,91 +13,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <style>
-        .subgraph1 span {
-            animation: fill1 2s ease 1s;
-        }
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
-        .subgraph2 span {
-            animation: fill2 2s ease 1s;
-        }
-
-        .subgraph3 span {
-            animation: fill3 2s ease 1s;
-        }
-
-        .subgraph4 span {
-            animation: fill4 2s ease 1s;
-        }
-
-        .subgraph5 span {
-            animation: fill5 2s ease 1s;
-        }
-
-        .subgraph6 span {
-            animation: fill6 2s ease 1s;
-        }
-
-        @keyframes fill1 {
-            0% {
-                height: 0%;
-            }
-
-            100% {
-                height: 20%;
-            }
-        }
-
-        @keyframes fill2 {
-            0% {
-                height: 0%;
-            }
-
-            100% {
-                height: 30%;
-            }
-        }
-
-        @keyframes fill3 {
-            0% {
-                height: 0%;
-            }
-
-            100% {
-                height: 40%;
-            }
-        }
-
-        @keyframes fill4 {
-            0% {
-                height: 0%;
-            }
-
-            100% {
-                height: 90%;
-            }
-        }
-
-        @keyframes fill5 {
-            0% {
-                height: 0%;
-            }
-
-            100% {
-                height: 100%;
-            }
-        }
-
-        @keyframes fill6 {
-            0% {
-                height: 0%;
-            }
-
-            100% {
-                height: 30%;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -190,48 +109,48 @@
                 <ul class="graph">
                     <li>
                         <div class="subgraph1">
-                            <span style="height: 20%;">
-                                <i>20</i>
+                            <span>
+                                <i>{{data2["ratio"][0]}}</i>
                             </span>
                         </div>
                         <p>1월</p>
                     </li>
                     <li>
                         <div class="subgraph2">
-                            <span style="height: 30%;">
-                                <i>30</i>
+                            <span>
+                                <i>{{data2["ratio"][1]}}</i>
                             </span>
                         </div>
                         <p>2월</p>
                     </li>
                     <li>
                         <div class="subgraph3">
-                            <span style="height: 40%;">
-                                <i>40</i>
+                            <span>
+                                <i>{{data2["ratio"][2]}}</i>
                             </span>
                         </div>
                         <p>3월</p>
                     </li>
                     <li>
                         <div class="subgraph4">
-                            <span style="height: 90%;">
-                                <i>90</i>
+                            <span>
+                                <i>{{data2["ratio"][3]}}</i>
                             </span>
                         </div>
                         <p>4월</p>
                     </li>
                     <li>
                         <div class="subgraph5">
-                            <span style="height: 100%;">
-                                <i>100</i>
+                            <span>
+                                <i>{{data2["ratio"][4]}}</i>
                             </span>
                         </div>
                         <p>5월</p>
                     </li>
                     <li>
                         <div class="subgraph6">
-                            <span style="height: 30%;">
-                                <i>30</i>
+                            <span>
+                                <i>{{data2["ratio"][5]}}</i>
                             </span>
                         </div>
                         <p>6월</p>
@@ -240,6 +159,27 @@
             </div>
         </div>
     </section>
+
+    <script>
+        $('.subgraph1 span').css('height', '0%')
+        $('.subgraph2 span').css('height', '0%')
+        $('.subgraph3 span').css('height', '0%')
+        $('.subgraph4 span').css('height', '0%')
+        $('.subgraph5 span').css('height', '0%')
+        $('.subgraph6 span').css('height', '0%')
+
+        $('.subgraph1 span').animate({ 'height': '{{data2["ratio"][0]}}%' }, 2500, 'easeInOutQuad')
+        $('.subgraph2 span').animate({ 'height': '{{data2["ratio"][1]}}%' }, 2500, 'easeInOutQuad')
+        $('.subgraph3 span').animate({ 'height': '{{data2["ratio"][2]}}%' }, 2500, 'easeInOutQuad')
+        $('.subgraph4 span').animate({ 'height': '{{data2["ratio"][3]}}%' }, 2500, 'easeInOutQuad')
+        $('.subgraph5 span').animate({ 'height': '{{data2["ratio"][4]}}%' }, 2500, 'easeInOutQuad')
+        $('.subgraph6 span').animate({ 'height': '{{data2["ratio"][5]}}%' }, 2500, 'easeInOutQuad')
+
+
+
+
+
+    </script>
 
 </body>
 
