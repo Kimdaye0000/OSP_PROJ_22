@@ -21,6 +21,9 @@ def crawlCountryInfo(country: str):
     #추천여행기간
     recomDate = soup.select("#nxTsOv div.item")
 
+    if not(inboundData and quarantineInfo and travelTip and recomDate):
+        return None
+
     isEntPass, isVaccineReq, isQurantAtDest = 'NoData', 'NoData', 'NoData'
     for i,text in enumerate(inboundData): # 현재 입국가능여부, 백신필수여부, 현지격리여부
         idx = text.get_text().find('여부') + 2
@@ -92,8 +95,8 @@ def crawlSearchPopularity(country: str):
     day = datetime.date.today().day
     
     #naverAPI id, secret(나중에 가릴 것)
-    client_id = ""
-    client_secret = ""
+    client_id = "HaWOrcasRaKjXojoFXFs"
+    client_secret = "sTTbLrJsi9"
     header_parm = { "X-Naver-Client-Id" : client_id, "X-Naver-Client-Secret" : client_secret }
     naver_datalab = "https://openapi.naver.com/v1/datalab/search"
 
@@ -119,6 +122,6 @@ def crawlSearchPopularity(country: str):
         return None
 
 if __name__ == '__main__':
-    country = '모로코'
+    country = '한국'
     print(crawlCountryInfo(country))
     print(crawlSearchPopularity(country))

@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#-*-coding: utf-8 -*-
+#-*- coding: utf-8 -*-
 
 from flask import Flask, render_template, redirect, request
 from elasticsearch import Elasticsearch
@@ -46,4 +46,4 @@ if __name__ == '__main__':
 	createIndex(es, index_countryinfo)
 	createIndex(es, index_searchpopularity)
 
-	#app.run(debug=True)
+	app.run(debug=True)
