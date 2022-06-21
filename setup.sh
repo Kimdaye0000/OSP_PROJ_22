@@ -7,14 +7,14 @@ sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1
 pip install requests beautifulsoup4 elasticsearch
 
 # elasticsearch 확인 후 설치
-ES_PATH="~/elasticsearch-8.2.0"
+ES_PATH="elasticsearch-8.2.0"
 if [ ! -d ~/$ES_PATH ]; then
     # elasticsearch 다운로드
-    ES_GZ="~/elasticsearch-8.2.0-linux-x86_64.tar.gz"
+    ES_GZ="elasticsearch-8.2.0-linux-x86_64.tar.gz"
     if [ ! -f ~/$ES_GZ ]; then
-        wget https://artifacts.elastic.co/downloads/elasticsearch/$ES_GZ
+        wget https://artifacts.elastic.co/downloads/elasticsearch/$ES_GZ -P ~
     fi
-    tar xvzf ~/$ES_GZ
+    tar xvzf ~/$ES_GZ -C ~
 
     # elasticsearch 설정
     ~/$ES_PATH/bin/elasticsearch -d -p es.pid
@@ -25,6 +25,7 @@ if [ ! -d ~/$ES_PATH ]; then
     read < ~/$ES_PATH/es.pid PID
     kill $PID
 fi
+sed -i 's/#cluster.name: my-application/cluster.name: my-application/' ~/$ES_PATH/config/elasticsearch.yml
 sed -i 's/xpack.security.enabled: true/xpack.security.enabled: false/' ~/$ES_PATH/config/elasticsearch.yml
 
 # 스크립트 실행
