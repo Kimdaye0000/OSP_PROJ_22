@@ -35,7 +35,7 @@ def info():
 			searchPopularDoc = searchFromIndex(es, index_searchpopularity, query)
 
 		if countryInfoDocument != None and searchPopularDoc != None:
-			return render_template('info.html', countryInfo=countryInfoDocument, searchPopularity=searchPopularDoc)
+			return render_template('info.html', data=countryInfoDocument, data2=searchPopularDoc)
 		else:
 			return render_template('error.html', country=country)
 
