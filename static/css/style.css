@@ -102,7 +102,7 @@ section {
 
 .vaccInfo {
     font-size: 1.4rem;
-    color: black;
+    color: snow;
     font-weight: bolder;
 }
 
@@ -227,6 +227,11 @@ section {
     text-align: center;
     font-family: "Do Hyeon", sans-serif;
 }
+
+.vaccInfo span {
+    color: darkorange;
+}
+
 
 
 @media only screen and (min-width : 1200px) {

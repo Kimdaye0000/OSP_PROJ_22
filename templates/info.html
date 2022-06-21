@@ -33,9 +33,12 @@
         <div class="inner">
             <div class="country-container">
                 <div class="countryName">{{data['Country']}}</div>
-                <div class="vaccInfo">현재 {{data['Country']}}은 {{data['PossibleToVisit']}}이며 백신접종은
-                    {{data['Vaccination']}}이고, 현지격리여부는 {{data['QurantineInfo']}}입니다.<br>귀국시 백신접종자는
-                    {{data['VaccineStatus_OK']}} 이며, 미접종자는 {{data['VaccineStatus_Not']}}입니다.</div>
+                <div class="vaccInfo">현재 <span>{{data['Country']}}</span>은 <span>{{data['PossibleToVisit']}}</span>이며
+                    백신접종은
+                    <span>{{data['Vaccination']}}</span>이고, 현지격리여부는 <span>{{data['QurantineInfo']}}</span>입니다.<br>귀국시
+                    백신접종자는
+                    <span>{{data['VaccineStatus_OK']}}</span>이며, 미접종자는 <span>{{data['VaccineStatus_Not']}}</span>입니다.
+                </div>
             </div>
         </div>
     </section>
